@@ -4,6 +4,16 @@ const cards = require('./CARDS.json');
 exports.getPeople = () => [...people];
 exports.getCards = () => [...cards];
 exports.getPerson = id => people.find(e => e.id === id);
+exports.updatePerson = (id, updates) => {
+  const idx = people.findIndex(e => e.id === id);
+  if (idx >= 0) {
+    const updatedPerson = { ...people[idx], ...updates };
+    people[idx] = updatedPerson;
+    return updatedPerson;
+  } else {
+    return null;
+  }
+};
 exports.getCard = id => cards.find(e => e.id === id);
 exports.getPersonCards = person => cards.filter(e => e.person_id === person);
 exports.paginatePeople = (offset = 0, num = 100) => people.slice(offset, offset + num);

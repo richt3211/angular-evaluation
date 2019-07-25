@@ -14,6 +14,11 @@ try {
     else res.json(null);
   });
 
+  app.post('/person/update', (req, res) => {
+    if (req.body != null && req.body.id != null && req.body.updates != null) res.json(db.updatePerson(req.body.id, req.body.updates));
+    else res.json(null);
+  });
+
   app.post('/card/query', (req, res) => {
     if (req.body != null && req.body.person != null) res.json(db.getPersonCards(req.body.person));
     else res.json([]);
