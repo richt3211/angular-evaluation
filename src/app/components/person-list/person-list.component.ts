@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Person } from 'src/app/models/person.model';
 import { PersonService } from 'src/app/services/person.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-person-list',
@@ -10,7 +11,7 @@ import { PersonService } from 'src/app/services/person.service';
 export class PersonListComponent implements OnInit {
   public dataSource: Person[];
   public displayedColumns: string[];
-  constructor(private personService: PersonService) { }
+  constructor(private personService: PersonService, private router: Router) { }
 
   ngOnInit() {
     this.getPeopleData();
@@ -21,6 +22,10 @@ export class PersonListComponent implements OnInit {
     this.personService.getPeople().subscribe(people => {
       this.dataSource = people;
     });
+  }
+
+  public handleRowClick(id: number): void {
+    this.router.navigate(['person', id]);
   }
 
 }
