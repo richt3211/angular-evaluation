@@ -1,4 +1,11 @@
 .app-container {
-    width: 920px; 
     margin: 0 auto;
+    width: 920px; 
+    mat-icon {
+        margin-right:10px;
+        &:hover {
+            cursor: default;
+        }
+    }
 }
+

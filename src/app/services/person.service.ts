@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PersonService {
-
+  public person:string;
   constructor(private http: HttpClient) { }
 
   public getPeople(): Observable<Person[]> {
@@ -15,6 +15,10 @@ export class PersonService {
   }
 
   public getPersonCards(id: number): Observable<Card[]> {
-    return this.http.post<Card[]>('http://localhost:3000/person/list', {person: id});
+    return this.http.post<Card[]>('http://localhost:3000/card/query', {'person': id});
+  }
+
+  public savePersonCardNumber(id: number, cardNumber:number): Observable<Card> {
+    return this.http.post<Card>('http://localhost:3000/card/add', {'person_id': id, 'card_number': cardNumber});
   }
 }

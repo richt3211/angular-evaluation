@@ -24,8 +24,9 @@ export class PersonListComponent implements OnInit {
     });
   }
 
-  public handleRowClick(id: number): void {
-    this.router.navigate(['person', id]);
+  public handleRowClick(person: Person): void {
+    this.router.navigate(['person', person.id]);
+    this.personService.person = `${person.first_name} ${person.last_name}`;
   }
 
 }

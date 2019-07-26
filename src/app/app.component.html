@@ -1,4 +1,10 @@
 <div class="app-container">
-  <mat-toolbar>Person List</mat-toolbar>
+  <mat-toolbar>
+      <button (click)="handleBackButtonClick()" *ngIf="isPersonDetailsView" matTooltip="Go back to person list" mat-icon-button>
+        <mat-icon >arrow_back</mat-icon>
+      </button>
+      <span *ngIf="!isPersonDetailsView">Person List</span>
+      <span *ngIf="isPersonDetailsView">{{personService.person}} Cards</span>
+  </mat-toolbar>
   <router-outlet></router-outlet>
 </div>
