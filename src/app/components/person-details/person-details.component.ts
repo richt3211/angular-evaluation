@@ -31,11 +31,7 @@ export class PersonDetailsComponent implements OnInit {
   
   private handleInitialRoute(): void {
     if (!this.personService.person || this.personService.person == '') {
-      // this.personService.isPersonDetailsView = false;
       this.router.navigate(["list"]);
-    }
-    else {
-      // this.personService.isPersonDetailsView = true;
     }
   }
 
@@ -46,7 +42,6 @@ export class PersonDetailsComponent implements OnInit {
   private getCardData():void {
     this.personService.getPersonCards(this.id).subscribe(data => {
       this.cardData = data;
-      console.log(this.cardData);
     })
   }
 

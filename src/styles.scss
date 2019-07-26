@@ -1,12 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+// using angular materials colors for the background
+
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 @import '~@angular/material/theming';
 
-// Include non-theme styles for core.
 @include mat-core();
 
-// Define your application's custom theme.
 $primary: mat-palette($mat-indigo);
 
 body {
